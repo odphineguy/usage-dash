@@ -1,0 +1,90 @@
+# Abe's AI Usage Dashboard - Cursor Rules
+
+## Project Context
+This is a Next.js 14+ dashboard for monitoring Google Cloud AI (Gemini) and Supabase usage with budget tracking and alerts.
+
+## Tech Stack
+- Next.js 14+ (App Router)
+- TypeScript
+- Tailwind CSS (Tailwind v4)
+- shadcn/ui with doom-64 theme
+- Recharts for visualizations
+- Google Cloud Monitoring API
+- Supabase Admin API
+
+## Code Style
+- Use TypeScript strict mode
+- Prefer functional components with hooks
+- Use async/await over promises
+- Follow ESLint rules (configured)
+- Use Tailwind utility classes over custom CSS
+
+## File Organization
+- API routes in `app/api/`
+- Components in `components/`
+- Business logic in `lib/`
+- Types in `types/`
+- Keep components small and focused
+
+## Security
+- NEVER expose API keys in client-side code
+- Always use environment variables
+- Keep service role keys server-side only
+- Use API routes for sensitive operations
+
+## Performance
+- Use React.memo for expensive components
+- Implement proper loading states
+- Cache API responses when appropriate
+- Lazy load heavy dependencies
+
+## Environment Variables
+Required variables (never commit these):
+- GOOGLE_CLOUD_PROJECT_ID
+- GOOGLE_APPLICATION_CREDENTIALS_JSON
+- NEXT_PUBLIC_SUPABASE_URL
+- NEXT_PUBLIC_SUPABASE_ANON_KEY
+- SUPABASE_SERVICE_ROLE_KEY
+- MONTHLY_BUDGET_USD
+
+## Common Tasks
+
+### Adding a New Metric
+1. Update types in `types/index.ts`
+2. Add API logic in `lib/` folder
+3. Update API route in `app/api/`
+4. Add visualization in dashboard component
+
+### Changing Theme
+```bash
+npx shadcn@latest add https://tweakcn.com/r/themes/[theme-name].json
+```
+
+### Adding UI Components
+```bash
+npx shadcn@latest add [component-name]
+```
+
+## Testing Checklist
+- [ ] Build succeeds: `npm run build`
+- [ ] No TypeScript errors
+- [ ] No ESLint errors
+- [ ] Environment variables configured
+- [ ] API routes return proper responses
+- [ ] Charts render without errors
+- [ ] Error boundaries work correctly
+
+## Deployment Notes
+- Set all environment variables in hosting platform
+- Test with production build before deploying
+- Monitor for rate limits on APIs
+- Set up error tracking (recommended)
+
+## Useful Commands
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
+```
+
